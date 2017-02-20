@@ -1,13 +1,14 @@
 OBJS = main.o vcpu.o
 CC = gcc
 COM = $(CC) -Wall -Wextra -std=c99 -pedantic-errors -c
-BIN = ..\bin
+BINW = ..\bin
+BINL = ../bin
 
-$(BIN)\vcpu.exe: $(OBJS)
-	$(CC) $(OBJS) -o $(BIN)\vcpu.exe
+$(BINW)\vcpu.exe: $(OBJS)
+	$(CC) $(OBJS) -o $(BINW)\vcpu.exe
 
-$(BIN)vcpu: $(OBJS)
-	$(CC) $(OBJS) -o $(BIN)vcpu
+$(BINL)/cpu: $(OBJS)
+	$(CC) $(OBJS) -o $(BINL)/vcpu
 
 main.o: main.c vcpu.h
 	$(COM) main.c
@@ -15,6 +16,6 @@ main.o: main.c vcpu.h
 vcpu.o: vcpu.c vcpu.h
 	$(COM) vcpu.c
 
-win: $(BIN)\vcpu.exe
+win: $(BINW)\vcpu.exe
 
-linux: $(BIN)vcpu
+linux: $(BIN)L/vcpu
