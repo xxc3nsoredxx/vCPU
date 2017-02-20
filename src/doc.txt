@@ -1,0 +1,32 @@
+vCPU documentation:
+    
+Each instruction is 64bits in size. Each executable will thus be 8-byte aligned.
+
+Instruction format:
+    aaaa bbbb cccc dddd
+    +----|----|----|------instruction locator
+         +----|----|------parameter 1
+              +----|------parameter 2
+                   |------parameter 3
+
+Error flags:
+    Bit set means error, clear means OK.
+
+    bit 00 - RAM allocation error
+
+Opcodes:
+    * means wildcard/unused
+    nop         - 0000 **** **** ****
+    addr        - 0001 00** 00** 00**
+                         +----|----|----result register
+                              +----|----register to add
+                                   +----register to add
+    addrs       - 0002 00** 00** 00**
+                         +----|----|----result register
+                              +----|----register to add
+                                   +----register to add
+
+Instructions:
+    nop             - no operatrion
+    addr  a b c     - add registers unsigned, a = b + c
+    addrs a b c     - add registers signed, a = b + c
