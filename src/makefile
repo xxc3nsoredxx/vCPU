@@ -5,7 +5,7 @@ BINW = ..\bin
 BINL = ../bin
 
 $(BINW)\vcpu.exe: $(OBJS)
-	$(CC) $(OBJS) -o $(BINW)\vcpu.exe
+	md ..\bin | $(CC) $(OBJS) -o $(BINW)\vcpu.exe
 
 $(BINL)/vcpu: $(OBJS)
 	mkdir ../bin | $(CC) $(OBJS) -o $(BINL)/vcpu
