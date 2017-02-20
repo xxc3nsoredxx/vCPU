@@ -17,5 +17,7 @@ vcpu.o: vcpu.c vcpu.h
 	$(COM) vcpu.c
 
 win: $(BINW)\vcpu.exe
+	mkdir ..\bin
 
 linux: $(BINL)/vcpu
+	mkdir ../bin
