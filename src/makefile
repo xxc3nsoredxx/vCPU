@@ -7,7 +7,7 @@ BINL = ../bin
 $(BINW)\vcpu.exe: $(OBJS)
 	$(CC) $(OBJS) -o $(BINW)\vcpu.exe
 
-$(BINL)/cpu: $(OBJS)
+$(BINL)/vcpu: $(OBJS)
 	$(CC) $(OBJS) -o $(BINL)/vcpu
 
 main.o: main.c vcpu.h
