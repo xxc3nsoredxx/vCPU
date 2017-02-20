@@ -18,4 +18,4 @@ vcpu.o: vcpu.c vcpu.h
 
 win: $(BINW)\vcpu.exe
 
-linux: $(BIN)L/vcpu
+linux: $(BINL)/vcpu
