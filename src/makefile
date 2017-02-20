@@ -8,7 +8,7 @@ $(BINW)\vcpu.exe: $(OBJS)
 	$(CC) $(OBJS) -o $(BINW)\vcpu.exe
 
 $(BINL)/vcpu: $(OBJS)
-	mkdir ../bin || $(CC) $(OBJS) -o $(BINL)/vcpu
+	mkdir ../bin | $(CC) $(OBJS) -o $(BINL)/vcpu
 
 main.o: main.c vcpu.h
 	$(COM) main.c
