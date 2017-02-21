@@ -40,7 +40,9 @@ void free_cpu ();
 void nop    (word_t, word_t, word_t);
 void addr   (word_t, word_t, word_t);
 void addi   (word_t, word_t, word_t);
-void sr     (word_t, word_t, word_t);
-void sl     (word_t, word_t, word_t);
+void sri    (word_t, word_t, word_t);
+void sli    (word_t, word_t, word_t);
+void srr    (word_t, word_t, word_t);
+void slr    (word_t, word_t, word_t);
 
 #endif

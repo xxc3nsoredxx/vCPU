@@ -2,6 +2,12 @@ vCPU documentation:
     
 Each instruction is 64bits in size. Each executable will thus be 8-byte aligned.
 
+Type sizes:
+    byte:   8  bits
+    word:   16 bits
+    dword:  32 bits
+    qword:  64 bits
+
 Instruction format:
     aaaa bbbb cccc dddd
     +----|----|----|------instruction locator
@@ -25,14 +31,22 @@ Opcodes:
                          +--|----|------result register
                             +----|------bytes 4-3
                                  +------bytes 1-0
-    sr          - 0003 00** **** ****
+    sri         - 0003 00** **** ****
                          +--|----|------result register
                             +----|------bytes 4-3
                                  +------bytes 1-0
-    sl          - 0004 00** **** ****
+    sli         - 0004 00** **** ****
                          +--|----|------result register
                             +----|------bytes 4-3
                                  +------bytes 1-0
+    srr         - 0005 00** 00** 00**
+                         +----|----|----result register
+                              +----|----register to shift
+                                   +----register with shift amount
+    slr         - 0006 00** 00** 00**
+                         +----|----|----result register
+                              +----|----register to shift
+                                   +----register with shift amount
 
 Instructions:
     nop             - no operatrion
@@ -41,5 +55,9 @@ Instructions:
                       if the number is bigger than b and c concatenated
                       then the second half is or'ed in after shifting the
                       first half (must be implemented by the assembler)
-    sr    a b c     - shift a register right by immediate value: a >>= b.c
-    sl    a b c     - shift a register left by immediate value: a <<= b.c
+    sri   a b c     - shift a register right by immediate value: a >>= b.c
+    sli   a b c     - shift a register left by immediate value: a <<= b.c
+    srr   a b c     - shift shift register b right by the value stored in 
+                      register c, store result in register a: a = b >> c
+    slr   a b c     - shift shift register b left by the value stored in 
+                      register c, store result in register a: a = b << c
