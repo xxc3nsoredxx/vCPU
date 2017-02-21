@@ -21,12 +21,15 @@ Opcodes:
                          +----|----|----result register
                               +----|----register to add
                                    +----register to add
-    addrs       - 0002 00** 00** 00**
-                         +----|----|----result register
-                              +----|----register to add
-                                   +----register to add
+    addi        - 0002 00** **** ****
+                         +--|----|------result register
+                            +----|------bytes 4-3
+                                 +------bytes 1-0
 
 Instructions:
     nop             - no operatrion
-    addr  a b c     - add registers unsigned, a = b + c
-    addrs a b c     - add registers signed, a = b + c
+    addr  a b c     - add registers: a = b + c
+    addi  a b c     - add immediate to register: a = b.c
+                      if the number is bigger than b and c concatenated
+                      then the second half is or'ed in after shifting the
+                      first half (must be implemented by the assembler)

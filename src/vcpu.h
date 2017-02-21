@@ -39,5 +39,6 @@ void free_cpu ();
 
 void nop (word_t, word_t, word_t);
 void addr (word_t, word_t, word_t);
+void addi (word_t, word_t, word_t);
 
 #endif

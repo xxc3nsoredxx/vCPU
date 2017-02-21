@@ -113,11 +113,11 @@ int main (int argc, char **argv) {
     // Loop through the RAM, executing instructions as we go
     for (int ram_index = 0; ram_index < (ram_size * ram_mult) / 8; ram_index++) {
         inst = *(ram + ram_index);
-        p3 = inst & 0xFFFF;                 // Extract parameter 1
+        p3 = inst & 0xFFFF;                 // Extract parameter 3
         inst >>= 16;
         p2 = inst & 0xFFFF;                 // Extract parameter 2
         inst >>= 16;
-        p1 = inst & 0xFFFF;                 // Extract parameter 3
+        p1 = inst & 0xFFFF;                 // Extract parameter 1
         inst >>= 16;
         op_index = inst & 0xFFFF;           // Extract the index
         (*(op + op_index)) (p1, p2, p3);    // Execute instruction
