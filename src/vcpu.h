@@ -37,8 +37,10 @@ qword_t *ram;
 void init_cpu ();
 void free_cpu ();
 
-void nop (word_t, word_t, word_t);
-void addr (word_t, word_t, word_t);
-void addi (word_t, word_t, word_t);
+void nop    (word_t, word_t, word_t);
+void addr   (word_t, word_t, word_t);
+void addi   (word_t, word_t, word_t);
+void sr     (word_t, word_t, word_t);
+void sl     (word_t, word_t, word_t);
 
 #endif

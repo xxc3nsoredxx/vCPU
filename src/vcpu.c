@@ -14,7 +14,7 @@ qword_t registers [] = {
 int ram_size = 4;
 int ram_mult = MiB;
 void (*op []) (word_t, word_t, word_t) = {
-    nop, addr, addi
+    nop, addr, addi, sr, sl
 };
 
 void init_cpu () {
@@ -39,4 +39,12 @@ void addr (word_t r_result, word_t r1, word_t r2) {
 
 void addi (word_t r_result, word_t low2, word_t low1) {
     *(registers + r_result) += ((((qword_t) low2) << 16) & 0xFFFF0000) | low1;
+}
+
+void sr (word_t r_result, word_t low2, word_t low1) {
+    *(registers + r_result) >>= ((((qword_t) low2) << 16) & 0xFFFF0000) | low1;
+}
+
+void sl (word_t r_result, word_t low2, word_t low1) {
+    *(registers + r_result) <<= ((((qword_t) low2) << 16) & 0xFFFF0000) | low1;
 }

@@ -25,6 +25,14 @@ Opcodes:
                          +--|----|------result register
                             +----|------bytes 4-3
                                  +------bytes 1-0
+    sr          - 0003 00** **** ****
+                         +--|----|------result register
+                            +----|------bytes 4-3
+                                 +------bytes 1-0
+    sl          - 0004 00** **** ****
+                         +--|----|------result register
+                            +----|------bytes 4-3
+                                 +------bytes 1-0
 
 Instructions:
     nop             - no operatrion
@@ -33,3 +41,5 @@ Instructions:
                       if the number is bigger than b and c concatenated
                       then the second half is or'ed in after shifting the
                       first half (must be implemented by the assembler)
+    sr    a b c     - shift a register right by immediate value: a >>= b.c
+    sl    a b c     - shift a register left by immediate value: a <<= b.c
