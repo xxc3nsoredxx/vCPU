@@ -31,22 +31,30 @@ Opcodes:
                          +--|----|------result register
                             +----|------bytes 4-3
                                  +------bytes 1-0
-    sri         - 0003 00** **** ****
-                         +--|----|------result register
-                            +----|------bytes 4-3
-                                 +------bytes 1-0
-    sli         - 0004 00** **** ****
-                         +--|----|------result register
-                            +----|------bytes 4-3
-                                 +------bytes 1-0
-    srr         - 0005 00** 00** 00**
+    srr         - 0003 00** 00** 00**
                          +----|----|----result register
                               +----|----register to shift
                                    +----register with shift amount
-    slr         - 0006 00** 00** 00**
+    slr         - 0004 00** 00** 00**
                          +----|----|----result register
                               +----|----register to shift
                                    +----register with shift amount
+    sri         - 0005 00** **** ****
+                         +--|----|------result register
+                            +----|------bytes 4-3
+                                 +------bytes 1-0
+    sli         - 0006 00** **** ****
+                         +--|----|------result register
+                            +----|------bytes 4-3
+                                 +------bytes 1-0
+    orr         - 0007 00** 00** 00**
+                         +----|----|----result register
+                              +----|----register to or
+                                   +----register to or
+    ori         - 0008 00** **** ****
+                         +--|----|------result register
+                            +----|------bytes 4-3
+                                 +------bytes 1-0
 
 Instructions:
     nop             - no operatrion
@@ -55,9 +63,11 @@ Instructions:
                       if the number is bigger than b and c concatenated
                       then the second half is or'ed in after shifting the
                       first half (must be implemented by the assembler)
-    sri   a b c     - shift a register right by immediate value: a >>= b.c
-    sli   a b c     - shift a register left by immediate value: a <<= b.c
     srr   a b c     - shift shift register b right by the value stored in 
                       register c, store result in register a: a = b >> c
     slr   a b c     - shift shift register b left by the value stored in 
                       register c, store result in register a: a = b << c
+    sri   a b c     - shift a register right by immediate value: a >>= b.c
+    sli   a b c     - shift a register left by immediate value: a <<= b.c
+    orr   a b c     - bitwise or registers: a = b | c
+    ori   a b c     - bitwise or register by immediate: a |= b.c

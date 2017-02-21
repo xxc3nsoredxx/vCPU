@@ -13,12 +13,12 @@
 // types
 typedef uint_fast8_t    byte_t;
 typedef uint_fast16_t   word_t;
-typedef uint_fast32_t   dword_t ;
-typedef uint_fast64_t   qword_t ;
-typedef int_fast8_t    s_byte_t;
-typedef int_fast16_t   s_word_t;
-typedef int_fast32_t   s_dword_t ;
-typedef int_fast64_t   s_qword_t ;
+typedef uint_fast32_t   dword_t;
+typedef uint_fast64_t   qword_t;
+typedef int_fast8_t     s_byte_t;
+typedef int_fast16_t    s_word_t;
+typedef int_fast32_t    s_dword_t;
+typedef int_fast64_t    s_qword_t;
 
 // errors
 extern qword_t errors;
@@ -44,5 +44,7 @@ void sri    (word_t, word_t, word_t);
 void sli    (word_t, word_t, word_t);
 void srr    (word_t, word_t, word_t);
 void slr    (word_t, word_t, word_t);
+void orr    (word_t, word_t, word_t);
+void ori    (word_t, word_t, word_t);
 
 #endif

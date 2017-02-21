@@ -14,7 +14,7 @@ qword_t registers [] = {
 int ram_size = 4;
 int ram_mult = MiB;
 void (*op []) (word_t, word_t, word_t) = {
-    nop, addr, addi, sri, sli, srr, slr
+    nop, addr, addi, srr, slr, sri, sli, orr, ori
 };
 
 void init_cpu () {
@@ -41,6 +41,14 @@ void addi (word_t r_result, word_t low2, word_t low1) {
     *(registers + r_result) += ((((qword_t) low2) << 16) & 0xFFFF0000) | low1;
 }
 
+void srr (word_t r_result, word_t r1, word_t r2) {
+    *(registers + r_result) = *(registers + r1) >> *(registers + r2);
+}
+
+void slr (word_t r_result, word_t r1, word_t r2) {
+    *(registers + r_result) = *(registers + r1) << *(registers + r2);
+}
+
 void sri (word_t r_result, word_t low2, word_t low1) {
     *(registers + r_result) >>= ((((qword_t) low2) << 16) & 0xFFFF0000) | low1;
 }
@@ -49,10 +57,10 @@ void sli (word_t r_result, word_t low2, word_t low1) {
     *(registers + r_result) <<= ((((qword_t) low2) << 16) & 0xFFFF0000) | low1;
 }
 
-void srr (word_t r_result, word_t r1, word_t r2) {
-    *(registers + r_result) = *(registers + r1) >> *(registers + r2);
+void orr (word_t r_result, word_t r1, word_t r2) {
+    *(registers + r_result) = *(registers + r1) | *(registers + r2);
 }
 
-void slr (word_t r_result, word_t r1, word_t r2) {
-    *(registers + r_result) = *(registers + r1) << *(registers + r2);
+void ori (word_t r_result, word_t low2, word_t low1) {
+    *(registers + r_result) |= ((((qword_t) low2) << 16) & 0xFFFF0000) | low1;
 }
