@@ -46,5 +46,7 @@ void srr    (word_t, word_t, word_t);
 void slr    (word_t, word_t, word_t);
 void orr    (word_t, word_t, word_t);
 void ori    (word_t, word_t, word_t);
+void andr   (word_t, word_t, word_t);
+void andi   (word_t, word_t, word_t);
 
 #endif

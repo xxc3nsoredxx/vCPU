@@ -55,6 +55,14 @@ Opcodes:
                          +--|----|------result register
                             +----|------bytes 4-3
                                  +------bytes 1-0
+    andr        - 0009 00** 00** 00**
+                         +----|----|----result register
+                              +----|----register to and
+                                   +----register to and
+    andi        - 000A 00** **** ****
+                         +--|----|------result register
+                            +----|------bytes 4-3
+                                 +------bytes 1-0
 
 Instructions:
     nop             - no operatrion
@@ -71,3 +79,5 @@ Instructions:
     sli   a b c     - shift a register left by immediate value: a <<= b.c
     orr   a b c     - bitwise or registers: a = b | c
     ori   a b c     - bitwise or register by immediate: a |= b.c
+    andr  a b c     - bitwise and registers: a = b & c
+    andi  a b c     - bitwise and register by immediate: a &= b.c
