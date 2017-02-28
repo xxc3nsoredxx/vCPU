@@ -10,14 +10,14 @@ void print_help () {
 }
 
 void free_all (FILE *input) {
-    printf ("Error Flags: 0x%016lX\n", (long unsigned int) errors);
+    printf ("Error Flags: 0x%016"PRIX64"\n", errors);
     free_cpu ();
     fclose (input);
 }
 
 void dump_ram (int qwords) {
     for (int cx = 0; cx < qwords; cx++)
-        printf ("%016"PRIx64"\n", *(ram + cx));
+        printf ("%016"PRIX64"\n", *(ram + cx));
 }
 
 void dump_registers () {
@@ -27,7 +27,7 @@ void dump_registers () {
             separator = '\n';
         else
             separator = ' ';
-        printf ("r%02d: 0x%016"PRIx64"%c", cx, *(registers + cx), separator);
+        printf ("r%02d: 0x%016"PRIX64"%c", cx, *(registers + cx), separator);
     }
 }
 
@@ -56,7 +56,7 @@ int main (int argc, char **argv) {
     }
 
     // read file into RAM
-    char temp;
+    unsigned char temp;
     int qwords = 0;
     for (int cx = 0; ; cx++) {
         // read first byte
@@ -104,8 +104,10 @@ int main (int argc, char **argv) {
         return -1;
     }
 
+    dump_ram (qwords);
+
     qword_t inst;       // Stores the instruction from RAM
-    int op_index;       // Stores the index into the opcode array
+    unsigned int op_index;       // Stores the index into the opcode array
     word_t p1, p2, p3;  // Stores parameters
     printf ("RAM: %d bytes\n", ram_size * ram_mult);
     printf ("Max instrutions: %d\n", (ram_size * ram_mult) / 8);
